@@ -26,10 +26,7 @@ module TargetProcess
     private
 
     def perform(type, path, options={})
-      auth = { username: TargetProcess.configuration.username,
-               password: TargetProcess.configuration.password }
-      options.merge!(basic_auth: auth)
-      check_for_api_errors HTTParty.send(type, generate_url(path), options)
+      check_for_api_errors HTTParty.send(type, generate_url(path, TargetProcess.configuration.token), options)
     end
 
     def check_for_api_errors(response)
@@ -40,11 +37,11 @@ module TargetProcess
       end
     end
 
-    def generate_url(path)
-      if TargetProcess.configuration.api_url[-1] == "/"
-        TargetProcess.configuration.api_url + path
+    def generate_url(path, token)
+      if TargetProcess.configuration.api_url[-1] == '/'
+        "#{TargetProcess.configuration.api_url}#{path}?token=#{token}"
       else
-        TargetProcess.configuration.api_url + "/" + path
+        "#{TargetProcess.configuration.api_url}/#{path}?token=#{token}"
       end
     end
 

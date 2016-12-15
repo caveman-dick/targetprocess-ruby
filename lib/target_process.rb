@@ -8,8 +8,8 @@ module TargetProcess
   class ConfigurationError < StandardError; end
 
   def self.configuration
-    msg = "TargetProcess is not configured yet"
-    @configuration || raise(TargetProcess::ConfigurationError.new(msg))
+    msg = 'TargetProcess is not configured yet'
+    @configuration || raise(TargetProcess::ConfigurationError.new())
   end
 
   def self.client
