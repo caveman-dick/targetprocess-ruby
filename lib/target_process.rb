@@ -27,7 +27,7 @@ module TargetProcess
   end
 
   ENTITIES = ["Task", "UserStory", "Feature", "Bug", "User", "Project",
-            "Release", "Iteration", "Request", "TestCase", "Impediment",
+            "Release", "Iteration", "Request", "TestCase", "TestStep", "Impediment",
             "Comment", "Process", "Priority", "Severity", "EntityState",
             "Program", "Testplan", "TestPlanRun", "TestCaseRun", "Time",
             "Assignment", "Role", "RoleEffort", "ProjectMember", "Build",
